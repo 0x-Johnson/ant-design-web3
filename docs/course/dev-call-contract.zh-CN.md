@@ -28,7 +28,8 @@ order: 3
 ```diff
 + import { http } from 'wagmi';
 import { Address, ConnectButton, Connector, NFTCard } from '@ant-design/web3';
-import { MetaMask, WagmiWeb3ConfigProvider } from '@ant-design/web3-wagmi';
+- import { MetaMask, WagmiWeb3ConfigProvider } from '@ant-design/web3-wagmi';
++ import { WagmiWeb3ConfigProvider, MetaMask, Mainnet, Sepolia } from "@ant-design/web3-wagmi";
 
 export default function Web3() {
   return (
@@ -139,12 +140,10 @@ const CallTest = () => {
 
 // ...
 + const { writeContract, data: hash } = useWriteContract();
-
   return (
     <div>
       {result.data?.toString()}
 +      <Button
-+        loading={isConfirming}
 +        onClick={() => {
 +          writeContract(
 +            {
